@@ -25,7 +25,7 @@ class Application
         @@cart.each do |item|
           new_array << "#{item.gsub(/\W/, "")}"
         end
-        resp.write "#{new_array}"
+        resp.write "#{new_array[0]}"
       end
       
     elsif req.path.match(/add/)
