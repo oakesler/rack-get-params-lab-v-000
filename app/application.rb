@@ -12,28 +12,33 @@ class Application
       @@items.each do |item|
         resp.write "#{item}\n"
       end
-      elsif req.path.match(/search/)
-      search_term = req.params["q"]
-      resp.write handle_search(search_term)
-      elsif req.path.match(/cart/)
-        if @@cart.length == 0 
-          resp.write "Your cart is empty"
+      
+    elsif req.path.match(/search/)
+    search_term = req.params["q"]
+    resp.write handle_search(search_term)
+    
+    elsif req.path.match(/cart/)
+      if @@cart.length == 0 
+        resp.write "Your cart is empty"
         else
           new_array = []
           @@cart.each do |item|
-          new_array << "#{item.gsub(/\W/, "")
-        end
-        resp.write "#{new_array}"
-        elsif req.path.match(/add/)
-        item = req.params["item"]
-          if @@items.include?(item)
-            @@cart << item
-            resp.write "added #{item}"
-          else
-          resp.write "We don't have that item"
+            new_array << "#{item.gsub(/\W/, "")
           end
+        resp.write "#{new_array}"
+      
+      elsif req.path.match(/add/)
+      item = req.params["item"]
+        if @@items.include?(item)
+          @@cart << item
+          resp.write "added #{item}"
         else
+          resp.write "We don't have that item"
+        end
+      
+      else
         resp.write "Path Not Found"
+      end
     end
     resp.finish
   end
