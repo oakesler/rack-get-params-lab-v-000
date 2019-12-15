@@ -20,25 +20,22 @@ class Application
     elsif req.path.match(/cart/)
       if @@cart.length == 0 
         resp.write "Your cart is empty"
-        else
-          new_array = []
-          @@cart.each do |item|
-            new_array << "#{item.gsub(/\W/, "")
-          end
-        resp.write "#{new_array}"
-      
-      elsif req.path.match(/add/)
-      item = req.params["item"]
-        if @@items.include?(item)
-          @@cart << item
-          resp.write "added #{item}"
-        else
-          resp.write "We don't have that item"
-        end
-      
       else
-        resp.write "Path Not Found"
+        new_array = []
+        @@cart.each do |item|
+          new_array << "#{item.gsub(/\W/, "")
+        end
+        resp.write "#{new_array}"
+    elsif req.path.match(/add/)
+      item = req.params["item"]
+      if @@items.include?(item)
+        @@cart << item
+        resp.write "added #{item}"
+      else
+        resp.write "We don't have that item"
       end
+    else
+      resp.write "Path Not Found"
     end
     resp.finish
   end
