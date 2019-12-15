@@ -21,11 +21,7 @@ class Application
       if @@cart.length == 0 
         resp.write "Your cart is empty"
       else
-        new_array = []
-        @@cart.each do |item|
-          new_array << "#{@@cart.join("\n")}"
-        end
-        resp.write "#{new_array}"
+        resp.write "#{@@cart.join("\n")}"
       end
       
     elsif req.path.match(/add/)
