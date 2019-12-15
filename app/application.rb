@@ -37,7 +37,6 @@ class Application
     end
     resp.finish
   end
-end
 
   def handle_search(search_term)
     if @@items.include?(search_term)
@@ -46,4 +45,6 @@ end
       return "Couldn't find #{search_term}"
     end
   end
+  
+  
 end
