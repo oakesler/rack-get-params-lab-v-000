@@ -23,9 +23,9 @@ class Application
       else
         new_array = []
         @@cart.each do |item|
-          new_array << "#{item}"
+          new_array << "#{@@cart.join("\n"}"
         end
-        resp.write "#{new_array[0]}"
+        resp.write "#{new_array}"
       end
       
     elsif req.path.match(/add/)
