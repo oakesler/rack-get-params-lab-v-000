@@ -26,6 +26,7 @@ class Application
           new_array << "#{item.gsub(/\W/, "")}"
         end
         resp.write "#{new_array}"
+      end
       
     elsif req.path.match(/add/)
       item = req.params["item"]
