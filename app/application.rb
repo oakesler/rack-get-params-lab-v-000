@@ -14,8 +14,8 @@ class Application
       end
       
     elsif req.path.match(/search/)
-    search_term = req.params["q"]
-    resp.write handle_search(search_term)
+      search_term = req.params["q"]
+      resp.write handle_search(search_term)
     
     elsif req.path.match(/cart/)
       if @@cart.length == 0 
@@ -26,6 +26,7 @@ class Application
           new_array << "#{item.gsub(/\W/, "")
         end
         resp.write "#{new_array}"
+      end
     elsif req.path.match(/add/)
       item = req.params["item"]
       if @@items.include?(item)
