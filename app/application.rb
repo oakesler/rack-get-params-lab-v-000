@@ -23,7 +23,7 @@ class Application
       else
         new_array = []
         @@cart.each do |item|
-          new_array << "#{item.gsub(/\W/, "")}"
+          new_array << "#{item}"
         end
         resp.write "#{new_array[0]}"
       end
