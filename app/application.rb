@@ -23,7 +23,7 @@ class Application
       else
         new_array = []
         @@cart.each do |item|
-          new_array << "#{@@cart.join("\n"}"
+          new_array << "#{@@cart.join("\n")}"
         end
         resp.write "#{new_array}"
       end
